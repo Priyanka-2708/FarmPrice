@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            width: 220px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #28a745;
+        }
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Farmer Dashboard</h1>
+    </header>
+    <div class="dashboard">
+        {% for crop in crops %}
+        <div class="card">
+            <h3>{{ crop[1] }}</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Market: {{ crop[2] }}</p>
+            <p><i class="fa-solid fa-dollar-sign"></i> Price: ₹{{ crop[3] }}</p>
+            <p><i class="fa-solid fa-calendar"></i> Updated: {{ crop[4] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
