@@ -1,78 +1,212 @@
-🌾 Farmer Market Price Information System
+[README.md](https://github.com/user-attachments/files/26298780/README.md.# 🌾 Farmer Market Price Information System
 
-## 📌 Project Description
-This project is a web application that helps farmers check daily market prices of crops such as vegetables, fruits, and grains. It reduces dependency on middlemen and helps farmers make better selling decisions.
+A clean, responsive web application that helps farmers check **daily crop wholesale prices** with **Tamil Nadu–specific data**, category filters, and real-time API insights.
 
-## 📌 Problem Statement
-Farmers often face difficulties in getting accurate and up-to-date market prices. This leads to:
+---
 
-- Selling crops at lower prices
-- Loss of potential profit
-- Dependence on middlemen
-- Lack of transparency in market trends
+## 📁 Project Structure
 
-## 💡 Solution
-The Farmer Market Price Information System provides:
+```
+farmer_market/
+├── app.py                  ← Flask backend (routes + DB logic)
+├── database.db             ← SQLite database (auto-created)
+├── .env                    ← API key (hidden)
+├── .gitignore              ← Prevents sensitive files upload
+├── requirements.txt        ← Python dependencies
+├── templates/
+│   ├── index.html          ← Main dashboard
+│   └── login.html          ← Login page
+└── static/
+    ├── style.css           ← UI styling
+    └── script.js           ← Fetch API + dynamic logic
+```
 
-- A web-based platform where farmers can select crops and view daily market prices.
-- Easy-to-use interface for quick access to price information.
-- Database-driven backend that ensures accurate and up-to-date data.
-- Reduces dependency on middlemen by giving direct access to market prices.
+---
+
+## 🚀 Quick Start
+
+### 1. Install dependencies
+
+```bash
+pip install flask python-dotenv tavily-python
+```
+
+### 2. Add API key
+
+Create a `.env` file:
+
+```
+TAVILY_API_KEY=your_api_key_here
+```
+
+---
+
+### 3. Run the app
+
+```bash
+python app.py
+```
+
+---
+
+### 4. Open in browser
+
+```
+http://localhost:5000/login
+```
+
+---
+
+## 🔐 Login Credentials
+
+| Username | Password |
+| -------- | -------- |
+| farmer1  | pass123  |
+| admin    | admin123 |
+
+---
+
+## 🌟 Features
+
+### 🔹 Core Features
+
+* Login & Logout system
+* Fetch crop prices using AJAX (no reload)
+* Responsive UI (mobile + desktop)
+
+---
+
+### 🔹 Tamil Nadu Focus 🌍
+
+* Only **Tamil Nadu markets**
+* Shows:
+
+  * Market Name (Koyambedu, Erode, Salem, etc.)
+  * State: Tamil Nadu
+
+---
+
+### 🔹 Category Filter
+
+Filter crops by:
+
+* 🌿 Vegetable
+* 🌾 Grain
+* 🍎 Fruit
+* 💰 Cash Crop
+
+Each crop shows a **color-coded category badge**
+
+---
+
+### 🔹 Location Filter
+
+* Filter by **Tamil Nadu**
+* Displays:
+
+  * Market name
+  * State
+
+---
+
+### 🔹 Expanded Crop List 🌾
+
+Includes 18+ crops:
+
+* Tomato, Brinjal, Carrot, Beans
+* Rice, Wheat, Maize
+* Banana, Mango, Papaya
+* Sugarcane, Cotton, Turmeric, etc.
+
+---
+
+### 🔹 Live API Integration (Tavily) 🌐
+
+Fetch real-time market insights:
+
+```
+/search_live?crop=Tomato
+```
+
+Returns:
+
+* Latest price trends
+* Market updates
+* Tamil Nadu-specific insights
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Route          | Description                      |
+| ------ | -------------- | -------------------------------- |
+| GET    | `/login`       | Login page                       |
+| GET    | `/`            | Home dashboard                   |
+| POST   | `/get_price`   | Get price for selected crop      |
+| GET    | `/all_prices`  | Get all crop prices (filterable) |
+| GET    | `/filters`     | Get categories & states          |
+| GET    | `/search_live` | Fetch live data from Tavily API  |
+
+---
+
+## 📦 Sample Request
+
+```bash
+curl -X POST http://localhost:5000/get_price \
+     -H "Content-Type: application/json" \
+     -d '{"crop_name": "Rice"}'
+```
+
+---
+
+## 🔐 Security
+
+* API key stored in `.env`
+* `.env` is ignored using `.gitignore`
+
+```
+.env
+```
+
+✔ Prevents API key exposure on GitHub
+
+---
+
+## 💡 Benefits
+
+* Real-time crop price awareness
+* Tamil Nadu market focus
+* Reduces dependency on middlemen
+* Helps farmers make better selling decisions
+
+---
 
 ## 🛠️ Tech Stack
 
 **Frontend:**
-- HTML → Structure of web pages
-- CSS → Styling and layout
-- JavaScript → Dynamic content and user interaction
+
+* HTML, CSS, JavaScript
 
 **Backend:**
-- Python (Flask framework) → Handles logic and data processing
+
+* Python (Flask)
 
 **Database:**
-- SQLite → Stores and retrieves crop price data
 
-**Development Tools:**
-- VS Code → Code editing
-- Web Browser (Chrome/Edge) → Testing and debugging
+* SQLite
 
-## 🚀 Project Development Phases
+**API:**
 
-### 🔸 1. Frontend Development Phase
-**Goal:** Build user interface  
-**Tasks:**
-- Create web pages
-- Design layout and styles
-- Add user input options  
-**Tools Used:** HTML, CSS, JavaScript
+* Tavily (Live data)
 
-### 🔸 2. Backend Development Phase
-**Goal:** Handle logic and data processing  
-**Tasks:**
-- Receive user request (crop selection)
-- Fetch data from database
-- Send response to frontend  
-**Tools Used:** Python (Flask framework)
+---
 
-### 🔸 3. Database / Data Handling Phase
-**Goal:** Store and retrieve crop price data  
-**Tasks:**
-- Maintain crop price records
-- Retrieve data based on user selection  
-**Tools Used:** SQLite
+## 📌 Future Enhancements
 
-### 🔸 4. Integration Phase
-**Goal:** Connect frontend and backend  
-**Tasks:**
-- Link HTML forms to Flask routes
-- Send user input and receive data
-- Display fetched data dynamically  
-**Tools Used:** Flask routing, JavaScript (fetch/AJAX)
+* Graphs for price trends 📊
+* Multi-state support 🌍
+* Farmer notifications 🔔
+* Mobile app version 📱
 
-### 🔸 5. Testing Phase
-**Goal:** Ensure application works correctly  
-**Tasks:**
-- Test multiple crops
-- Check error handling
-- Fix bugs  
-**Tools Used:** Web Browser, VS Code Debugger
+---
+md…]()
